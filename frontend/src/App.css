@@ -1,0 +1,142 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #6d7279;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 380px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 24px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 15px;
+  border: 1.8px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="file"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+button {
+  width: 100%;
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+a {
+  color: #4a90e2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  margin-bottom: 15px;
+  color: #d93025;
+  font-weight: 600;
+}
+
+/* Partie profile */
+.profile-container {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+  width: 400px;
+  text-align: center;
+}
+
+.profile-container h2 {
+  margin-bottom: 20px;
+  color: #1e1e1e;
+  font-size: 22px;
+}
+
+.profile-container p {
+  margin: 10px 0;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.profile-container img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 2px solid #4a90e2;
+}
+
+.logout-button {
+  margin-top: 20px;
+  background-color: #ef5350;
+  color: white;
+  font-weight: 600;
+  padding: 12px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
