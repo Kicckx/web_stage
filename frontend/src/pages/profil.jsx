@@ -43,14 +43,39 @@ const Profile = () => {
     setPreviewPhoto(URL.createObjectURL(file));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const updatedUser = { ...user, ...form };
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Non autorisé");
+      navigate("/login");
+      return;
+    }
 
-    alert("Modifications sauvegardées (simulation)");
+    try {
+      const response = await fetch("http://localhost:3000/user/profile", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Erreur lors de la mise à jour");
+      } else {
+        setUser(data.user);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        alert("Profil mis à jour avec succès !");
+      }
+    } catch (error) {
+      alert("Erreur serveur");
+      console.error(error);
+    }
   };
 
   const handleLogout = () => {
@@ -126,7 +151,14 @@ const Profile = () => {
 
       <button
         onClick={handleLogout}
-        style={{ marginTop: 20, padding: "10px 20px", cursor: "pointer", backgroundColor: "#f44336", color: "white", border: "none" }}
+        style={{
+          marginTop: 20,
+          padding: "10px 20px",
+          cursor: "pointer",
+          backgroundColor: "#f44336",
+          color: "white",
+          border: "none"
+        }}
       >
         Se déconnecter
       </button>

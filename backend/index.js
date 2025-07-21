@@ -12,6 +12,8 @@ app.use(express.json());
 
 app.use('/auth', authRoutes);
 
+app.use('/user', require('./routes/user'));
+
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur le port ${PORT}`);
 });
