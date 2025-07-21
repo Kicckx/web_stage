@@ -23,8 +23,19 @@ const register = async (req, res) => {
     );
 
     const newUser = result.rows[0];
-  
-    res.status(201).json({ message: 'Utilisateur créé avec succès', user: newUser });
+
+    const token = jwt.sign(
+      { userId: newUser.id, email: newUser.email },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    res.status(201).json({
+      message: 'Utilisateur créé avec succès',
+      user: newUser,
+      token,
+    });
+
   } catch (error) {
     console.error('Erreur lors de l\'inscription:', error);
     res.status(500).json({ message: 'Erreur serveur' });
